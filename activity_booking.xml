@@ -4,9 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity"
+    tools:context=".User.BookingActivity"
     android:orientation="vertical">
 
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="Book"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBook"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_alignTop="@id/textView31"
+        android:layout_alignBottom="@id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,11 +40,9 @@
         android:layout_width="match_parent"
         android:background="@color/blue"
         android:layout_height="wrap_content"
+        app:itemIconTint="@color/icon_colors"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"/>
-
-
-
-
 
 </RelativeLayout>

@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
     android:layout_margin="3dp"
+    app:cardCornerRadius="5dp"
     android:background="@color/dark"
     app:cardElevation="2dp"
     >
@@ -25,6 +25,7 @@
             app:iss_corner_radius="10"
             app:iss_delay="1000"
             app:iss_period="1000"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,7 @@
         </com.denzcoskun.imageslider.ImageSlider>
 
         <TextView
-            android:id="@+id/venueName"
+            android:id="@+id/venueName1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
@@ -54,16 +55,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/kalam_style"
             />
-        <TextView
-            android:id="@+id/viewDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17dp"
-            android:text="View Details"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/kalam_style"
-            />
+
 
     </LinearLayout>
 

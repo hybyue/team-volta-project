@@ -1,4 +1,4 @@
-package com.example.volta_lang;
+package com.example.volta_lang.Login;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.volta_lang.User.Profile;
+import com.example.volta_lang.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -26,9 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -76,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String name = signName.getText().toString().trim();
                 String phone = signNumber.getText().toString().trim();
 
+
+
                 if( TextUtils.isEmpty(name)) {
                     signName.setError("Fill in the blank");
                 }if (TextUtils.isEmpty(phone)) {
@@ -93,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if(TextUtils.isEmpty(ConfirmPassword)) {
                     signConfirm.setError("fill in the blank");
-                  return;
+                    return;
                 }
 
 
@@ -122,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                          user.put("name",name);
                          user.put("email", email);
                          user.put("phone", phone);
+                         user.put("isUser", "1");
 
                          documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                              @Override
@@ -153,7 +155,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // Function to validate Philippine phone numbers
     private boolean isValidPhilippinePhoneNumber(String phoneNumber) {
         // Check if the phone number starts with "09" or "+63" and has 11 digits
         return phoneNumber.matches("^(09|\\+639)\\d{9}$");
