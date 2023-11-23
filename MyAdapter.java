@@ -5,17 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.firebase.firestore.auth.User;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<VenueData> venueArrayList;
-    private final RecyclerDetails recyclerDetails;
+     final RecyclerDetails recyclerDetails;
 
     public MyAdapter(Context context, ArrayList<VenueData> venueArrayList, RecyclerDetails recyclerDetails) {
         this.context = context;
@@ -45,15 +45,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         VenueData venue = venueArrayList.get(position);
 
-//         Glide.with(context).load(venue.url).into(holder.imageSlider);
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(venue.url, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(venue.url1, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(venue.url2, ScaleTypes.FIT));
 
-
-        // Set the image list for the ImageSlider
-        holder.imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+        Glide.with(context)
+                .load(venue.url)
+                .into(holder.imageSlider);
         holder.venueName.setText(venue.venue);
         holder.venueLocation.setText(venue.location);
 
@@ -70,11 +65,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView venueName, venueLocation;
-        ImageSlider imageSlider;
+        ImageView imageSlider;
         public MyViewHolder(@NonNull View itemView, RecyclerDetails recyclerDetails) {
             super(itemView);
 
-            venueName = itemView.findViewById(R.id.venueName);
+            venueName = itemView.findViewById(R.id.venueName1);
             venueLocation = itemView.findViewById(R.id.venueLocation);
             imageSlider = itemView.findViewById(R.id.imageSlider);
 

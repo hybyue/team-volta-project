@@ -5,9 +5,13 @@ public class BookOfUser {
     String dateSet;
     String days;
     String name;
-    String price, totalGuest, totalPrice;
+    String price, totalGuest, totalPrice, imageUrl;
 
-    public BookOfUser(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice) {
+    private String documentId;
+
+
+
+    public BookOfUser(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice, String imageUrl) {
         this.currentDate = currentDate;
         this.dateSet = dateSet;
         this.days = days;
@@ -15,6 +19,7 @@ public class BookOfUser {
         this.price = price;
         this.totalGuest = totalGuest;
         this.totalPrice = totalPrice;
+        this.imageUrl = imageUrl;
     }
 
     public String getCurrentDate() {
@@ -71,6 +76,23 @@ public class BookOfUser {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    // Add a setter method for the document ID
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public BookOfUser(){

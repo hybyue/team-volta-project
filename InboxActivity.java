@@ -1,4 +1,4 @@
-package com.example.volta_lang;
+package com.example.volta_lang.User;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.volta_lang.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class InboxActivity extends AppCompatActivity {
