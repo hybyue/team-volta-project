@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_setting"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/exit1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/reject" />
+    <TextView
+        android:id="@+id/textAboutUsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textAboutUsContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:shadowColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Welcome to Venue Vista â€“ Your Ultimate Event Companion! We are passionate about making your event planning experience seamless and enjoyable. Whether you're organizing a wedding, conference, or any special occasion, Venue Vista is here to simplify the process and help you find the perfect venue.\n\nAt Venue Vista, we strive to provide a user-friendly platform that connects event organizers with a wide range of venues. Our mission is to empower you to discover, compare, and book venues effortlessly.\n\nKey Features:\n- Browse a diverse range of venues for various events.\n- View detailed information, pricing, and availability.\n- Easily contact venue owners or managers.\n- Save and organize your favorite venues for quick access.\n\nThank you for choosing Venue Vista for your event planning needs. We are dedicated to continually enhancing our platform to ensure a delightful experience for our users."
+        android:layout_below="@id/textAboutUsTitle"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>

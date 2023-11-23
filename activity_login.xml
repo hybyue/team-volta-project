@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_screen"
-    tools:context=".LoginActivity">
+    tools:context=".Login.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.001" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-53dp"
@@ -109,13 +109,13 @@
             android:layout_marginBottom="16dp"
             android:text="Forgot Password?"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            app:layout_constraintBottom_toTopOf="@+id/contactHost"
             app:layout_constraintEnd_toEndOf="@+id/signPassword"
             app:layout_constraintHorizontal_bias="0.935"
             app:layout_constraintStart_toStartOf="@+id/signPassword" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/contactHost"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -138,8 +138,8 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/registerPage"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/loginButton"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+            app:layout_constraintStart_toStartOf="@+id/contactHost"
+            app:layout_constraintTop_toBottomOf="@+id/contactHost" />
 
         <TextView
             android:id="@+id/registerPage"
@@ -149,10 +149,10 @@
             android:text="Register"
             android:textColor="@color/blue"
             android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="@+id/loginButton"
+            app:layout_constraintEnd_toEndOf="@+id/contactHost"
             app:layout_constraintHorizontal_bias="0.838"
-            app:layout_constraintStart_toStartOf="@+id/loginButton"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+            app:layout_constraintStart_toStartOf="@+id/contactHost"
+            app:layout_constraintTop_toBottomOf="@+id/contactHost" />
 
 
 

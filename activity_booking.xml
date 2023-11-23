@@ -5,41 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".User.BookingActivity"
+    android:background="@drawable/bg_setting"
     android:orientation="vertical">
-
-
-
-
-
-
-
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         android:text="Book"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBook"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_alignTop="@id/textView31"
-        android:layout_alignBottom="@id/bottomNavigationView"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.325" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="250dp"
+            android:layout_height="245dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recyclerBook"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.273"
+            app:srcCompat="@drawable/defective" />
+
+        <TextView
+            android:id="@+id/emptyBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No book yet "
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/recyclerBook"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:background="@color/blue"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:itemIconTint="@color/icon_colors"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu"

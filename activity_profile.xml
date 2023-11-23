@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Profile">
-
-
-
+    tools:context=".User.Profile">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -76,6 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
@@ -149,7 +147,7 @@
 
                     <View
                         android:id="@+id/view2"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="40dp"
                         android:background="@color/black"
@@ -173,7 +171,7 @@
 
                     <View
                         android:id="@+id/view4"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="40dp"
                         android:background="@color/black"
@@ -197,44 +195,52 @@
 
                     <View
                         android:id="@+id/view5"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="65dp"
-                        android:background="@color/black"
                         app:layout_constraintEnd_toEndOf="@+id/view4"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/view4"
                         app:layout_constraintTop_toBottomOf="@+id/view4" />
 
 
-                    <ImageView
+                    <Button
                         android:id="@+id/imageView7"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:onClick="logout"
-                        android:layout_marginTop="28dp"
-                        android:src="@drawable/log_out"
-                        app:layout_constraintEnd_toEndOf="@+id/view5"
-                        app:layout_constraintHorizontal_bias="0.09"
-                        app:layout_constraintStart_toStartOf="@+id/view5"
-                        app:layout_constraintTop_toBottomOf="@+id/view5" />
-
-                    <TextView
-                        android:id="@+id/buttonText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="30dp"
-                        android:layout_toEndOf="@id/imageView7"
-                        android:text="Logout"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border_botton_book"
+                        android:backgroundTint="#FF0000"
+                        android:text="Log Out"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/view5"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/imageView7"
+                        app:layout_constraintStart_toStartOf="@+id/view5"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                    <Button
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border_botton_book"
+                        android:backgroundTint="#1A3ADF"
+                        android:text="Edit information"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/view5"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view5" />
 
 

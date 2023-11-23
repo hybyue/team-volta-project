@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="3dp"
-    app:cardCornerRadius="5dp"
-    android:background="@color/dark"
     app:cardElevation="2dp"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="0dp">
 
 
-        <com.denzcoskun.imageslider.ImageSlider
+
+        <ImageView
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            app:iss_auto_cycle="false"
-            app:iss_corner_radius="10"
-            app:iss_delay="1000"
-            app:iss_period="1000"
-            android:scaleType="fitCenter"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        </com.denzcoskun.imageslider.ImageSlider>
+        <View
+            android:id="@+id/overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#63000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/venueName1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/kalam_style"
-            />
-
-
+            android:layout_marginBottom="3dp"
+            android:text="VenueName"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/venueLocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/venueLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="location"
+            android:textColor="@color/white"
             android:textSize="17dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/kalam_style"
-            />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/venueName1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/venueName1" />
 
 
-    </LinearLayout>
-
-
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
