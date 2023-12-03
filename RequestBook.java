@@ -3,9 +3,11 @@ package com.example.volta_lang.User;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -21,6 +24,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +51,7 @@ public class RequestBook extends AppCompatActivity {
 
     private Calendar selectedStartDate;
     private ImageView url, backB;
-    private TextView nameV, locationV, currentDating, priceses, totalNight, price, totalNights, guestVieww, guestVieww2, guestVieww3, totalPrice;
+    private TextView nameV, locationV, currentDating, totalNight, price, guestVieww, guestVieww2, guestVieww3, totalPrice;
     private EditText editDate, howlong, howGuests;
     private Button requestB;
 
@@ -54,7 +59,6 @@ public class RequestBook extends AppCompatActivity {
     private FirebaseFirestore fStore;
 
     int parent_price;
-    int totalDays = 1;
     int totalGuest = 1;
     int totalChild = 0;
     int totalInfant = 0;
@@ -62,6 +66,9 @@ public class RequestBook extends AppCompatActivity {
     ImageView img;
     ProgressBar progressBar;
     int defaultPrice;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    private int selectedRadioButtonId = -1;
 
 
     @Override
@@ -79,7 +86,6 @@ public class RequestBook extends AppCompatActivity {
         howGuests = findViewById(R.id.how_many_guest);
         howlong = findViewById(R.id.how_long_day);
         totalNight = findViewById(R.id.totalNight);
-        totalNights = findViewById(R.id.totalNights);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         guestVieww = findViewById(R.id.gestsView);
@@ -90,16 +96,18 @@ public class RequestBook extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         backB = findViewById(R.id.backB);
 
+
+        totalNight.setText("Morning 7:30 am");
+
         backB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
 
         NumberFormat numberFormat = NumberFormat.getInstance();
         numberFormat.setGroupingUsed(true);
-
 
 
         if (totalGuest <= 1) {
@@ -110,11 +118,6 @@ public class RequestBook extends AppCompatActivity {
             guestVieww.setText(totalInfant + " infant");
         }
 
-        if (totalDays <= 1) {
-            totalNight.setText("only one day");
-        }
-
-        totalNights.setText(" x " + totalDays + " night");
 
         howGuests.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +144,7 @@ public class RequestBook extends AppCompatActivity {
 
 
         Calendar c = Calendar.getInstance();
+        c.add(Calendar.DAY_OF_MONTH, 2);
         String currentDates = DateFormat.getDateInstance(DateFormat.LONG).format(c.getTime());
         currentDating = findViewById(R.id.viewDate);
 
@@ -149,7 +153,7 @@ public class RequestBook extends AppCompatActivity {
         url = findViewById(R.id.url);
         nameV = findViewById(R.id.venueName1);
         locationV = findViewById(R.id.locate);
-        priceses = findViewById(R.id.prices);
+
         price = findViewById(R.id.priceless);
 
 
@@ -159,7 +163,6 @@ public class RequestBook extends AppCompatActivity {
                 .load(image)
                 .into(url);
         price.setText(priceV);
-        priceses.setText(priceV);
 
 
         defaultPrice = Integer.parseInt(price.getText().toString().replace(",", ""));
@@ -167,12 +170,55 @@ public class RequestBook extends AppCompatActivity {
         totalPrice.setText("Php " + numberFormat.format(parent_price));
 
 
-
         requestB = findViewById(R.id.requestBook);
         requestB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestBooking();
+                View view = LayoutInflater.from(RequestBook.this).inflate(R.layout.alert_dialog, null);
+                AlertDialog.Builder alert = new AlertDialog.Builder(RequestBook.this);
+                alert.setView(view);
+
+                Button yes = view.findViewById(R.id.yesButton);
+                Button no = view.findViewById(R.id.noButton);
+                TextView title = view.findViewById(R.id.logoutText);
+                TextView descrip = view.findViewById(R.id.textDescrip);
+
+                yes.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                yes.setTextColor(Color.BLACK);
+
+                no.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                no.setTextColor(Color.BLACK);
+
+                title.setText("Warning!");
+
+                descrip.setText("Are you sure about your the set up?");
+
+                AlertDialog alertDialog = alert.create();
+                alertDialog.setCancelable(true);
+
+
+                // Set click listener for the "Yes" button
+                yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // User clicked "Yes," log out
+                        requestBooking();
+
+                        alertDialog.dismiss();
+                    }
+                });
+
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                alertDialog.show();
+
+
             }
         });
 
@@ -181,8 +227,7 @@ public class RequestBook extends AppCompatActivity {
 
     private void requestBooking() {
         fStore.collection("BookOfUser")
-                .document(fAuth.getCurrentUser().getUid())
-                .collection("CurrentUser")
+                .whereEqualTo("userUid", fAuth.getCurrentUser().getUid())
                 .limit(1)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -206,6 +251,8 @@ public class RequestBook extends AppCompatActivity {
     private void performNewBooking() {
         String currentsDate;
         Calendar calendar = Calendar.getInstance();
+        String guest = guestVieww.getText().toString().trim();
+
 
         SimpleDateFormat saveFormat = new SimpleDateFormat("MMMM dd, yyyy");
         currentsDate = saveFormat.format(calendar.getTime());
@@ -223,24 +270,22 @@ public class RequestBook extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 String username = document.getString("name");
-
-                                Log.d("TAG", "Username: " + username);
+                                String gmail = document.getString("email");
 
                                 String imageUrl = getIntent().getStringExtra("Image");
 
+                                book.put("userUid", fAuth.getCurrentUser().getUid());
                                 book.put("username", username);
+                                book.put("userGmail", gmail);
                                 book.put("name", nameV.getText().toString());
-                                book.put("price", price.getText().toString());
                                 book.put("currentDate", currentsDate);
                                 book.put("dateSet", currentDating.getText().toString());
-                                book.put("days", totalNight.getText().toString());
+                                book.put("time", totalNight.getText().toString());
                                 book.put("totalGuest", guestVieww.getText().toString());
-                                book.put("totalPrice", priceses.getText().toString());
+                                book.put("totalPrice", totalPrice.getText().toString());
                                 book.put("imageUrl", imageUrl);
 
                                 fStore.collection("BookOfUser")
-                                        .document(fAuth.getCurrentUser().getUid())
-                                        .collection("CurrentUser")
                                         .add(book)
                                         .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                             @Override
@@ -263,7 +308,6 @@ public class RequestBook extends AppCompatActivity {
                     }
                 });
     }
-
 
     private void showGuests() {
 
@@ -491,92 +535,41 @@ public class RequestBook extends AppCompatActivity {
     private void showDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_total_days);
+        dialog.setContentView(R.layout.activity_time);
 
 
         ImageView exits = dialog.findViewById(R.id.exit1);
-        EditText clear = dialog.findViewById(R.id.clearGuest);
-        Button save = dialog.findViewById(R.id.savePeople);
-        Button minus = dialog.findViewById(R.id.minusDay);
-        Button add = dialog.findViewById(R.id.addDay);
-        TextView hows = dialog.findViewById(R.id.howMany);
-
-        // Store the default price
-
-        NumberFormat numberFormat = NumberFormat.getInstance();
-        numberFormat.setGroupingUsed(true);
-
-        totalPrice.setText("Php " + numberFormat.format(parent_price));
+        radioGroup = dialog.findViewById(R.id.groupButton);
 
 
-        // Set the initial value
-        hows.setText(String.valueOf(totalDays));
+        if (selectedRadioButtonId != -1) {
+            radioGroup.check(selectedRadioButtonId);
+        }
 
-        add.setOnClickListener(new View.OnClickListener() {
+        Button saveMoNa = dialog.findViewById(R.id.saveMo);
+
+        saveMoNa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (totalDays < 5) {
-                    totalDays++;
-                } else {
-                    Toast.makeText(getApplicationContext(), "Reach the maximum dates", Toast.LENGTH_SHORT).show();
-                }
-                hows.setText(String.valueOf(totalDays));
-            }
-        });
+                int radioId = radioGroup.getCheckedRadioButtonId();
 
-        minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (totalDays > 1) {
-                    totalDays--;
-                }
-                hows.setText(String.valueOf(totalDays));
-            }
-        });
+                radioButton = radioGroup.findViewById(radioId);
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedStartDate == null) {
-                    Toast.makeText(getApplicationContext(), "Please select a date first.", Toast.LENGTH_SHORT).show();
-                    return;
+                if (radioButton != null) {
+                    if (radioButton.getId() == R.id.morningSet) {
+                        totalNight.setText("Morning 7:30 am");
+                    } else if (radioButton.getId() == R.id.nightSet) {
+                        totalNight.setText("Evening 7:30 pm");
+                    }
                 }
 
-                int total_day = totalDays;
-                int total_price = total_day * defaultPrice;
-
-                 parent_price = total_price + 2000;
-
-
-
-                if (totalDays == 1) {
-                    totalNight.setText(total_day + " night");
-                    totalNights.setText(" x " + totalDays + " night");
-                    totalPrice.setText("Php " + numberFormat.format(parent_price));
-                } else {
-                    totalNight.setText(total_day + " nights");
-                    totalNights.setText(" x " + totalDays + " nights");
-                    totalPrice.setText("Php " + numberFormat.format(parent_price));
-                }
-
-                Calendar endDate = (Calendar) selectedStartDate.clone();
-                endDate.add(Calendar.DAY_OF_MONTH, totalDays - 1);
-
-                SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.US);
-                SimpleDateFormat selectDay = new SimpleDateFormat("MMMM d", Locale.US);
-
-                String formattedStartDate = sdf.format(selectedStartDate.getTime());
-                String formattedEndDate = selectDay.format(endDate.getTime());
-
-                currentDating.setText(formattedStartDate + " to " + formattedEndDate);
-
-                String formattedTotalPrice = NumberFormat.getNumberInstance().format(total_price);
-                priceses.setText(formattedTotalPrice);
-                hows.setEnabled(false);
+                // Save the selected radio button ID
+                selectedRadioButtonId = radioId;
 
                 dialog.dismiss();
             }
         });
+
 
         exits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -585,19 +578,13 @@ public class RequestBook extends AppCompatActivity {
             }
         });
 
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                totalDays = 1;
-                hows.setText(String.valueOf(totalDays));
-            }
-        });
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+
     }
 
 
@@ -605,34 +592,28 @@ public class RequestBook extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                // Create a Calendar instance and set it to the selected date
                 selectedStartDate = Calendar.getInstance();
                 selectedStartDate.set(year, month, day);
 
-                // Get the current date
-                Calendar currentDate = Calendar.getInstance();
 
-                // Calculate the date 3 days from now
-                Calendar futureDate = Calendar.getInstance();
-                futureDate.add(Calendar.DAY_OF_MONTH, 3);
-
-                if (selectedStartDate.before(currentDate) || selectedStartDate.before(futureDate)) {
-                    // Date is invalid, show an error message or handle it as needed
-                    // For example, you can show a Toast message
-                    Toast.makeText(getApplicationContext(), "Please select a date within the next 3 days.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Format the selected date to be user-friendly
-                    SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.US);
-                    String formattedDate = sdf.format(selectedStartDate.getTime());
-
-                    // Showing the formatted date in the textView
-                    currentDating.setText(formattedDate);
-                }
+                SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy", Locale.US);
+                String formattedDate = sdf.format(selectedStartDate.getTime());
+                currentDating.setText(formattedDate);
             }
         }, 2023, 01, 20);
 
-        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000); // Disable past dates
+        // Set the minimum date to disable past dates
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.add(Calendar.DAY_OF_MONTH, 2); // Set minimum date to the day after the current date
+        datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
+
+        // Set the maximum date to allow selection within the next 9 months
+        Calendar futureDate = Calendar.getInstance();
+        futureDate.add(Calendar.MONTH, 9);
+        datePickerDialog.getDatePicker().setMaxDate(futureDate.getTimeInMillis());
+
+        // Show the DatePickerDialog
         datePickerDialog.show();
     }
-}
 
+}

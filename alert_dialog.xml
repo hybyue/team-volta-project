@@ -3,61 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_botton_book"
+    android:backgroundTint="@color/white"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/border_botton_book"
-        android:padding="20dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView43"
+            android:id="@+id/textDescrip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Are you sure you want to logout?"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logoutText" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/yesButton"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/border_botton_book"
-            android:backgroundTint="#15CF18"
+            android:backgroundTint="#DC0101"
+            android:textSize="12dp"
             android:text="yes"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView43" />
+            app:layout_constraintEnd_toEndOf="@+id/textDescrip"
+            app:layout_constraintTop_toBottomOf="@+id/textDescrip" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/noButton"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/border_botton_book"
-            android:backgroundTint="#DC0101"
+            android:backgroundTint="#2BB612"
             android:text="no"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/yesButton"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView43"
-            app:layout_constraintTop_toBottomOf="@+id/textView43" />
+            app:layout_constraintStart_toStartOf="@+id/textDescrip"
+            app:layout_constraintTop_toBottomOf="@+id/textDescrip" />
 
         <TextView
             android:id="@+id/logoutText"

@@ -1,30 +1,25 @@
 package com.example.volta_lang.BookingAdapterData;
 
-import com.google.firebase.Timestamp;
-
-public class BookOfUser {
+public class CurrentUser {
     String currentDate;
     String dateSet;
     String days;
-    String name, username, userGmail;
-    String  totalGuest, totalPrice, imageUrl, time;
-
-
+    String name, username;
+    String price, totalGuest, totalPrice, imageUrl;
 
     private String documentId;
 
 
-    public BookOfUser(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice, String imageUrl, String username, String time, String userGmail) {
+    public CurrentUser(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice, String imageUrl, String username) {
         this.currentDate = currentDate;
         this.dateSet = dateSet;
         this.days = days;
         this.name = name;
+        this.price = price;
         this.totalGuest = totalGuest;
         this.totalPrice = totalPrice;
         this.imageUrl = imageUrl;
         this.username =  username;
-        this.time = time;
-        this.userGmail =userGmail;
     }
 
     public String getCurrentDate() {
@@ -59,7 +54,13 @@ public class BookOfUser {
         this.name = name;
     }
 
+    public String getPrice() {
+        return price;
+    }
 
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getTotalGuest() {
         return totalGuest;
@@ -81,14 +82,6 @@ public class BookOfUser {
         return imageUrl;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -97,6 +90,7 @@ public class BookOfUser {
         return documentId;
     }
 
+    // Add a setter method for the document ID
     public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
@@ -109,16 +103,7 @@ public class BookOfUser {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public String getUserGmail() {
-        return userGmail;
-    }
-
-    public void setUserGmail(String userGmail) {
-        this.userGmail = userGmail;
-    }
-
-    public BookOfUser(){
+    public CurrentUser(){
 
     }
 }

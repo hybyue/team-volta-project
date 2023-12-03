@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".User.BookingActivity"
-    android:background="@drawable/bg_setting"
     android:orientation="vertical">
 
     <TextView
@@ -24,28 +23,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="Pending Book"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView48"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.325" />
+            app:layout_constraintTop_toBottomOf="@+id/textView47"
+            app:layout_constraintVertical_bias="0.301">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="250dp"
-            android:layout_height="245dp"
+            android:layout_width="150dp"
+            android:layout_height="145dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recyclerBook"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.539"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.273"
+            app:layout_constraintVertical_bias="0.163"
             app:srcCompat="@drawable/defective" />
 
         <TextView
@@ -54,12 +71,67 @@
             android:layout_height="wrap_content"
             android:text="No book yet "
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/recyclerBook"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:text="Accepted Book"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAccept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView48"
+            app:layout_constraintVertical_bias="0.029" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="150dp"
+            android:layout_height="145dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recyclerBook"
+            app:layout_constraintHorizontal_bias="0.539"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView48"
+            app:layout_constraintVertical_bias="0.071"
+            app:srcCompat="@drawable/defective" />
+
+        <TextView
+            android:id="@+id/emptyBook2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="not yet accepted by owner"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

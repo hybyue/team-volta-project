@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/dialog_bg">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose day or night"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/exit1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reject" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Please exit this page when you don't  \n need to fill up this."
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="@+id/exit1"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <Button
+        android:id="@+id/saveMo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/border_for_all"
+        android:backgroundTint="#020202"
+        android:text="Save"
+        android:textColor="@color/bg_screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/groupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/border_botton_book"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24">
+
+        <RadioButton
+            android:id="@+id/morningSet"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layoutDirection="rtl"
+            android:text="Morning"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:checked="true"/>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="7:30 am"
+            android:textColor="@color/black"
+            />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/black"
+            />
+
+        <RadioButton
+            android:id="@+id/nightSet"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layoutDirection="rtl"
+            android:textStyle="bold"
+            android:text="Evening"
+            android:textAlignment="textStart"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="7:30 pm"
+            android:textColor="@color/black"
+            />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

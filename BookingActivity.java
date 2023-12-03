@@ -1,7 +1,6 @@
 package com.example.volta_lang.User;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,23 +10,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.volta_lang.BookingAdapterData.BookAdapter;
 import com.example.volta_lang.BookingAdapterData.BookOfUser;
-import com.example.volta_lang.MyAdapter;
 import com.example.volta_lang.R;
-import com.example.volta_lang.VenueData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -56,11 +49,15 @@ public class BookingActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         bookOfUsers = new ArrayList<BookOfUser>();
-        bookAdapter = new BookAdapter(BookingActivity.this, bookOfUsers);
+        bookAdapter = new BookAdapter(BookingActivity.this, bookOfUsers,findViewById(android.R.id.content));
 
         recyclerView.setAdapter(bookAdapter);
 
+
+
         VenueListener();
+
+
 
         userID = fAuth.getCurrentUser().getUid();
 
@@ -92,27 +89,37 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     private void VenueListener() {
-        firestore.collection("BookOfUser").document(fAuth.getCurrentUser().getUid()).collection("CurrentUser").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    for (DocumentSnapshot  documentSnapshot : task.getResult().getDocuments()){
-                        BookOfUser booked = documentSnapshot.toObject(BookOfUser.class);
-                        bookOfUsers.add(booked);
+        String currentUserUid = fAuth.getCurrentUser().getUid();
 
+        firestore.collection("BookOfUser")
+                .whereEqualTo("userUid", currentUserUid)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            bookOfUsers.clear();
+                            for (DocumentSnapshot  documentSnapshot : task.getResult().getDocuments()){
+                                BookOfUser booked = documentSnapshot.toObject(BookOfUser.class);
+                                bookOfUsers.add(booked);
+
+                            }
+                            bookAdapter.notifyDataSetChanged();
+                            if (!bookOfUsers.isEmpty()) {
+                                findViewById(R.id.imageView).setVisibility(View.INVISIBLE);
+                                findViewById(R.id.emptyBook).setVisibility(View.INVISIBLE);
+                            } else {
+                                findViewById(R.id.imageView).setVisibility(View.VISIBLE);
+                                findViewById(R.id.emptyBook).setVisibility(View.VISIBLE);
+
+                            }
+                        }
+                        else {
+                            Log.e("TAG", "Error fetching pending bookings: " + task.getException().getMessage());
+                            Toast.makeText(BookingActivity.this, "Error fetching pending bookings", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    bookAdapter.notifyDataSetChanged();
-                    if (bookOfUsers.isEmpty()) {
-                        findViewById(R.id.imageView).setVisibility(View.VISIBLE);
-                        findViewById(R.id.emptyBook).setVisibility(View.VISIBLE);
-
-                    } else {
-                        findViewById(R.id.imageView).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.emptyBook).setVisibility(View.INVISIBLE);
-
-                    }
-                }
-            }
-        });
+                });
     }
+
 }

@@ -1,8 +1,7 @@
 package com.example.volta_lang.BookingAdapterData;
 
-import com.google.firebase.Timestamp;
+public class AcceptedBookings {
 
-public class BookOfUser {
     String currentDate;
     String dateSet;
     String days;
@@ -14,7 +13,7 @@ public class BookOfUser {
     private String documentId;
 
 
-    public BookOfUser(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice, String imageUrl, String username, String time, String userGmail) {
+    public AcceptedBookings(String currentDate, String dateSet, String days, String name, String price, String totalGuest, String totalPrice, String imageUrl, String username, String time, String userGmail) {
         this.currentDate = currentDate;
         this.dateSet = dateSet;
         this.days = days;
@@ -118,7 +117,7 @@ public class BookOfUser {
         this.userGmail = userGmail;
     }
 
-    public BookOfUser(){
+    public AcceptedBookings(){
 
     }
 }

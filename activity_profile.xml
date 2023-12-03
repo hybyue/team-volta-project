@@ -42,16 +42,19 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/setting" />
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profilePic"
-                        android:layout_width="70dp"
-                        android:layout_height="75dp"
-                        android:layout_marginTop="60dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="52dp"
+                        android:src="@drawable/user"
+                        app:civ_border_color="@android:color/black"
+                        app:civ_border_overlay="true"
+                        app:civ_border_width="1dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/user" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/profileName"
@@ -78,6 +81,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
 
+
                     <TextView
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
@@ -92,12 +96,21 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <View
+                        android:id="@+id/vie"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="35dp"
+                        android:background="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
                     <TextView
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="44dp"
-                        android:text="Email"
+                        android:text="Date of Birth"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/textView12"
@@ -197,14 +210,14 @@
                         android:id="@+id/view5"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="65dp"
-                        app:layout_constraintEnd_toEndOf="@+id/view4"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/view4"
-                        app:layout_constraintTop_toBottomOf="@+id/view4" />
+                        android:layout_marginTop="35dp"
+                        android:background="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
-                    <Button
+                    <android.widget.Button
                         android:id="@+id/imageView7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -214,7 +227,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/border_botton_book"
-                        android:backgroundTint="#FF0000"
+                        android:backgroundTint="#C80D0D"
                         android:text="Log Out"
                         android:textColor="@color/white"
                         android:textSize="17dp"
@@ -224,24 +237,26 @@
                         app:layout_constraintStart_toStartOf="@+id/view5"
                         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                    <Button
+
+                    <android.widget.Button
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/border_botton_book"
-                        android:backgroundTint="#1A3ADF"
+                        android:background="@drawable/border_for_all"
+                        android:backgroundTint="@color/blue"
                         android:text="Edit information"
                         android:textColor="@color/white"
                         android:textSize="17dp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/view5"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view5" />
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

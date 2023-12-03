@@ -27,12 +27,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+import com.example.volta_lang.Admin.HomeActivity;
+import com.example.volta_lang.Login.LoginActivity;
 import com.example.volta_lang.MyAdapter;
 import com.example.volta_lang.R;
 import com.example.volta_lang.RecyclerDetails;
 import com.example.volta_lang.VenueData;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -44,10 +49,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class MainActivity extends AppCompatActivity implements RecyclerDetails {
 
-    private ImageView profileView,  settings;
     private FirebaseAuth fAuth;
     private TextView textView;
     private boolean isPopupShown = false;
@@ -61,11 +67,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
     MyAdapter myAdapter;
     View popUp;
     ProgressDialog progressDialog;
-    
+    CircleImageView prof;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 
@@ -93,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+        prof = findViewById(R.id.profileView);
 
         myAdapter = new MyAdapter(MainActivity.this, venueData, this);
 
@@ -136,8 +146,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
                 textView.setText(documentSnapshot.getString("name"));
+                String imageUrl = documentSnapshot.getString("profileImageUrl");
 
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Glide.with(MainActivity.this) // Use Profile.this instead of this
+                            .load(imageUrl)
+                            .into(prof);
 
+                }
             }
         });
 
@@ -152,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
 
 
     }
+
 
     private void createPopupWindow() {
 
@@ -237,6 +254,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
         display.putExtra("Image", venueData.get(position).getUrl());
         display.putExtra("Image1", venueData.get(position).getUrl1());
         display.putExtra("Image2", venueData.get(position).getUrl2());
+        display.putExtra("Image3", venueData.get(position).getUrl3());
+        display.putExtra("Image4", venueData.get(position).getUrl4());
+        display.putExtra("Image5", venueData.get(position).getUrl5());
+        display.putExtra("Image6", venueData.get(position).getUrl6());
+        display.putExtra("Image7", venueData.get(position).getUrl7());
+        display.putExtra("Image8", venueData.get(position).getUrl8());
+        display.putExtra("Image9", venueData.get(position).getUrl9());
+        display.putExtra("Image10", venueData.get(position).getUrl10());
+        display.putExtra("Image11", venueData.get(position).getUrl11());
         display.putExtra("Price", venueData.get(position).getPrice());
 
 
@@ -247,4 +273,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerDetails {
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         return sharedPreferences.getBoolean("popupShown", false);
     }
+
+
 }

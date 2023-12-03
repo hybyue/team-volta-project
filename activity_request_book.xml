@@ -70,7 +70,7 @@
 
                 <ImageView
                     android:id="@+id/url"
-                    android:layout_width="160dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,8 +80,8 @@
                     android:id="@+id/venueName1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="/n"
+                    android:layout_marginTop="50dp"
+                    android:text=""
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -93,24 +93,15 @@
                     android:id="@+id/locate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="30dp"
                     android:text="TextView"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/venueName1"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/venueName1"
                     app:layout_constraintTop_toBottomOf="@+id/venueName1" />
 
-                <TextView
-                    android:id="@+id/star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-
-                    android:text="★4.6 stars "
-                    app:layout_constraintEnd_toEndOf="@+id/locate"
-                    app:layout_constraintHorizontal_bias="0.307"
-                    app:layout_constraintStart_toStartOf="@+id/locate"
-                    app:layout_constraintTop_toBottomOf="@+id/locate" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -187,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Nights stay"
+            android:text="Time"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -319,16 +310,26 @@
             app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Venue fee"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/textView20"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <TextView
             android:id="@+id/priceless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="1,999"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/textView20"
-            app:layout_constraintHorizontal_bias="0.818"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.81"
             app:layout_constraintStart_toStartOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -336,7 +337,7 @@
             android:id="@+id/php"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="2dp"
             android:text="Php"
             android:textColor="@color/black"
@@ -346,41 +347,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <TextView
-            android:id="@+id/prices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="bat null"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.826"
-            app:layout_constraintStart_toEndOf="@+id/php"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-        <TextView
-            android:id="@+id/pri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="3dp"
-            android:text="Php"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/prices"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/php"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-        <TextView
             android:id="@+id/cleanFee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="83dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="5dp"
             android:text="Cleaning fee"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/php"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/php"
-            app:layout_constraintTop_toBottomOf="@+id/php" />
+            app:layout_constraintEnd_toEndOf="@+id/textView45"
+            app:layout_constraintStart_toStartOf="@+id/textView45"
+            app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
         <TextView
             android:id="@+id/priceClean"
@@ -389,10 +364,10 @@
             android:layout_marginTop="8dp"
             android:text="Php 2,000"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/prices"
+            app:layout_constraintEnd_toEndOf="@+id/priceless"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/cleanFee"
-            app:layout_constraintTop_toBottomOf="@+id/prices" />
+            app:layout_constraintTop_toBottomOf="@+id/priceless" />
 
         <View
             android:id="@+id/view3"
@@ -429,9 +404,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textStyle="bold"
             android:text="Php 122,000"
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/view3"
             app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toEndOf="@+id/textView21"
@@ -505,7 +480,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView29"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/addMessage"
             android:layout_width="70dp"
             android:layout_height="30dp"
@@ -585,24 +560,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
-        <TextView
-            android:id="@+id/totalNights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/pri"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/priceless"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="124dp"
             android:indeterminate="true"
             android:indeterminateTint="@color/black"
             android:visibility="invisible"
@@ -610,6 +573,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -627,6 +592,7 @@
         android:text="Request to book"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/border_botton_book"

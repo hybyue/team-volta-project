@@ -14,22 +14,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminSite extends AppCompatActivity {
 
-    Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_site);
 
-        logout = findViewById(R.id.logout);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent logout = new Intent(AdminSite.this, LoginActivity.class);
-                startActivity(logout);
-                finish();
-            }
-        });
     }
 }

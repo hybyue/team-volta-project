@@ -23,110 +23,114 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-53dp"
-        android:layout_marginTop="28dp"
-        android:text="Name"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/logoname"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/logoname"
-        app:layout_constraintTop_toBottomOf="@+id/logoname" />
-
-    <TextView
-        android:id="@+id/logoname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/kalam_style"
-        android:text="Venue Vista"
-        android:textColor="@color/black"
-        android:textSize="34dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <EditText
-        android:id="@+id/signEmail"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="48dp"
-        android:textColor="@color/black"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="20dp"
-        android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:shadowColor="@color/black"
-        android:textColorHighlight="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/logoname"
-        app:layout_constraintStart_toStartOf="@+id/logoname"
-        app:layout_constraintTop_toBottomOf="@+id/logoname" />
-
-
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/logoname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Password"
+            android:fontFamily="@font/kalam_style"
+            android:text="Venue Vista"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/signEmail"
-            app:layout_constraintHorizontal_bias="0.029"
-            app:layout_constraintStart_toStartOf="@+id/signEmail"
-            app:layout_constraintTop_toBottomOf="@+id/signEmail" />
+            android:textSize="34dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
-        <EditText
-            android:id="@+id/signPassword"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="27dp"
-            android:background="@drawable/border"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Email"
             android:textColorHint="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/signEmail"
-            app:layout_constraintStart_toStartOf="@+id/signEmail"
-            app:layout_constraintTop_toBottomOf="@+id/signEmail" />
+            app:boxBackgroundColor="@color/bg_signin"
+            app:boxCollapsedPaddingTop="10dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/logoname"
+            app:layout_constraintStart_toStartOf="@+id/logoname"
+            app:layout_constraintTop_toBottomOf="@+id/logoname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:paddingLeft="20dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Password"
+            app:boxBackgroundColor="@color/bg_signin"
+            app:boxCollapsedPaddingTop="10dp"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:endIconTint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/textEmail"
+            app:layout_constraintStart_toStartOf="@+id/textEmail"
+            app:layout_constraintTop_toBottomOf="@+id/textEmail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColorHint="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
             android:id="@+id/forgetPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="16dp"
             android:text="Forgot Password?"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/contactHost"
-            app:layout_constraintEnd_toEndOf="@+id/signPassword"
-            app:layout_constraintHorizontal_bias="0.935"
-            app:layout_constraintStart_toStartOf="@+id/signPassword" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPassword"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/contactHost"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/button"
             android:text="LOGIN"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/signPassword"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/signPassword"
-            app:layout_constraintTop_toBottomOf="@+id/signPassword" />
-
+            app:layout_constraintEnd_toEndOf="@+id/textPassword"
+            app:layout_constraintStart_toStartOf="@+id/textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
 
         <TextView
             android:id="@+id/textView7"
@@ -155,10 +159,6 @@
             app:layout_constraintTop_toBottomOf="@+id/contactHost" />
 
 
-
-
-
-
         <ProgressBar
             android:id="@+id/progBar"
             style="?android:attr/progressBarStyle"
@@ -167,10 +167,9 @@
             android:indeterminate="true"
             android:indeterminateTint="@color/black"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/signPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signEmail" />
+            app:layout_constraintEnd_toEndOf="@+id/textEmail"
+            app:layout_constraintStart_toStartOf="@+id/textEmail"
+            app:layout_constraintTop_toTopOf="@+id/textEmail" />
 
 
 

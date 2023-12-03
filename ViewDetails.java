@@ -50,6 +50,15 @@ public class ViewDetails extends AppCompatActivity {
         String image = getIntent().getStringExtra("Image");
         String image1 = getIntent().getStringExtra("Image1");
         String image2 = getIntent().getStringExtra("Image2");
+        String image3 = getIntent().getStringExtra("Image3");
+        String image4 = getIntent().getStringExtra("Image4");
+        String image5 = getIntent().getStringExtra("Image5");
+        String image6 = getIntent().getStringExtra("Image6");
+        String image7 = getIntent().getStringExtra("Image7");
+        String image8 = getIntent().getStringExtra("Image8");
+        String image9 = getIntent().getStringExtra("Image9");
+        String image10 = getIntent().getStringExtra("Image10");
+        String image11 = getIntent().getStringExtra("Image11");
 
         String desc = getIntent().getStringExtra("Description");
         String price = getIntent().getStringExtra("Price");
@@ -109,9 +118,46 @@ public class ViewDetails extends AppCompatActivity {
         
         
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(image, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(image1, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(image2, ScaleTypes.FIT));
+
+        if (image != null && !image.isEmpty()) {
+            slideModels.add(new SlideModel(image, ScaleTypes.FIT));
+        }
+        if (image1 != null && !image1.isEmpty()) {
+            slideModels.add(new SlideModel(image1, ScaleTypes.FIT));
+        }
+        if (image2 != null && !image2.isEmpty()) {
+            slideModels.add(new SlideModel(image2, ScaleTypes.FIT));
+        }
+        if (image3 != null && !image3.isEmpty()) {
+            slideModels.add(new SlideModel(image3, ScaleTypes.FIT));
+        }
+
+        if (image4 != null && !image4.isEmpty()) {
+            slideModels.add(new SlideModel(image4, ScaleTypes.FIT));
+        }
+        if (image5 != null && !image5.isEmpty()) {
+            slideModels.add(new SlideModel(image5, ScaleTypes.FIT));
+        }
+        if (image6 != null && !image6.isEmpty()) {
+            slideModels.add(new SlideModel(image6, ScaleTypes.FIT));
+        }
+        if (image7 != null && !image7.isEmpty()) {
+            slideModels.add(new SlideModel(image7, ScaleTypes.FIT));
+        }
+        if (image8 != null && !image8.isEmpty()) {
+            slideModels.add(new SlideModel(image8, ScaleTypes.FIT));
+        }
+        if (image9 != null && !image9.isEmpty()) {
+            slideModels.add(new SlideModel(image9, ScaleTypes.FIT));
+        }
+        if (image10 != null && !image10.isEmpty()) {
+            slideModels.add(new SlideModel(image10, ScaleTypes.FIT));
+        }
+        if (image11 != null && !image11.isEmpty()) {
+            slideModels.add(new SlideModel(image11, ScaleTypes.FIT));
+        }
+
+
         // Set the image list for the ImageSlider
         imageSlider1.setImageList(slideModels, ScaleTypes.FIT);
 

@@ -6,27 +6,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/settings"
-        android:layout_alignParentEnd="true"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
         android:background="@drawable/user"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_overlay="true"
+        app:civ_border_width="1dp"
         android:backgroundTint="@color/white"
         android:onClick="profileView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="11dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="20dp"

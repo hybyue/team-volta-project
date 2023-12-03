@@ -2,7 +2,6 @@ package com.example.volta_lang.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,62 +12,50 @@ import android.widget.Button;
 import com.example.volta_lang.Login.LoginActivity;
 import com.example.volta_lang.R;
 import com.example.volta_lang.User.BookingActivity;
-import com.example.volta_lang.User.InboxActivity;
-import com.example.volta_lang.User.LocationActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeActivity extends AppCompatActivity {
+public class AdminInbox extends AppCompatActivity {
 
-    CardView cardView;
-    CardView activeBook;
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_admin_inbox);
 
+        logout = findViewById(R.id.logout);
 
-
-        cardView = findViewById(R.id.cardView3);
-        cardView.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AcceptOrderActivity.class));
+                FirebaseAuth.getInstance().signOut();
+                Intent logout = new Intent(AdminInbox.this, LoginActivity.class);
+                startActivity(logout);
+                finish();
             }
         });
 
-        activeBook = findViewById(R.id.activeBook);
-        activeBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AcceptedOrder.class));
-            }
-        });
 
         BottomNavigationView bottomNavigationView1 = findViewById(R.id.bottomNavigationView1);
-        bottomNavigationView1.setSelectedItemId(R.id.home);
+        bottomNavigationView1.setSelectedItemId(R.id.inbox);
         bottomNavigationView1.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem items) {
                 if (items.getItemId() == R.id.home) {
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 } else if (items.getItemId() == R.id.info) {
                     startActivity(new Intent(getApplicationContext(), UserInfoActivity.class));
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (items.getItemId() == R.id.inbox) {
-                    startActivity(new Intent(getApplicationContext(), AdminInbox.class));
-                    overridePendingTransition(0, 0);
-                    return true;
+                     return true;
                 } else {
                     throw new IllegalStateException("Unexpected value: " + items.getItemId());
                 }
             }
         });
-
-    }
-
-    public void Pending(View view) {
     }
 }

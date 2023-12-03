@@ -39,11 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="set how many guests \n maximum of the guests must be atleast 50 "
+        android:text="set how many guests maximum of  \n the guests must be atleast 50 "
         android:textColor="@color/black"
+        android:textSize="10dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="@+id/exit1"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -84,7 +85,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/textView24">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/minusguest"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -110,7 +111,7 @@
             android:textSize="19sp"
             android:textStyle="bold"/>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/addguest"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -159,7 +160,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/minusChild"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -185,7 +186,7 @@
             android:textSize="19sp"
             android:textStyle="bold" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/addChild"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -234,7 +235,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/minusInfant"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -260,7 +261,7 @@
             android:textSize="19sp"
             android:textStyle="bold" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/addInfant"
             android:layout_width="25dp"
             android:layout_height="25dp"
